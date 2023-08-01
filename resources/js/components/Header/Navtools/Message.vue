@@ -21,9 +21,9 @@
           Messages
         </div>
         <div class="text-slate-800 dark:text-white text-xs md:text-right">
-          <router-link :to="{ name: 'chat' }" class="underline"
+          <!-- <router-link :to="{ name: 'chat' }" class="underline"
             >View all</router-link
-          >
+          > -->
         </div>
       </div>
       <div class="divide-y divide-slate-100 dark:divide-slate-800">

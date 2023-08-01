@@ -18,9 +18,9 @@
           Notifications
         </div>
         <div class="text-slate-800 dark:text-slate-200 text-xs md:text-right">
-          <router-link :to="{ name: 'notifications' }" class="underline"
+          <!-- <router-link :to="{ name: 'notifications' }" class="underline"
             >View all</router-link
-          >
+          > -->
         </div>
       </div>
       <div class="divide-y divide-slate-100 dark:divide-slate-800">
