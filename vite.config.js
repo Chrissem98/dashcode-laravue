@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue'
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
   plugins: [
@@ -16,6 +17,9 @@ export default defineConfig({
               includeAbsolute: false,
           },
       },
+    }),
+    Pages({
+      dirs: ['./resources/js/pages'],
     }),
   ],
   resolve: {
