@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import routes from '~pages'
+import { useAuthStore } from "@/store/auth";
 
 const router = createRouter({
   history: createWebHistory(import.meta.BASE_URL),
@@ -13,7 +14,7 @@ const router = createRouter({
     }
   },
 });
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from) => {
   const titleText = to.name;
   const words = titleText.split(" ");
   const wordslength = words.length;
@@ -23,7 +24,29 @@ router.beforeEach((to, from, next) => {
 
   document.title = "Dashcode  - " + words;
 
-  next();
+  const auth = useAuthStore()
+
+  if(!auth.loggedIn){
+    await auth.getAuthUser()
+  }
+
+  // instead of having to check every route record with
+  // to.matched.some(record => record.meta.requiresAuth)
+  if (!to.meta.requiresGuest && !auth.loggedIn) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    return {
+      name: "login",
+
+      // save the location we were at to come back later
+      query: { redirect: to.fullPath },
+    }
+  }
+  if (auth.loggedIn && to.meta.requiresGuest) {
+    return {
+      name: "index",
+    }
+  }
 });
 
 router.afterEach(() => {

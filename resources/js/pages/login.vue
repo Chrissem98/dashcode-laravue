@@ -28,20 +28,6 @@
             </div>
           </div>
           <Signin />
-          <div class="max-w-[242px] mx-auto mt-8 w-full">
-            <Social />
-          </div>
-          <div
-            class="mx-auto font-normal text-slate-500 dark:text-slate-400 2xl:mt-12 mt-6 uppercase text-sm text-center"
-          >
-            Already registered?
-            <router-link
-              to="/"
-              class="text-slate-900 dark:text-white font-medium hover:underline"
-            >
-              Sign In</router-link
-            >
-          </div>
         </div>
       </div>
       <div class="auth-footer3 text-white py-5 px-5 text-xl w-full">
@@ -69,3 +55,8 @@ export default {
 };
 </script>
 <style lang="scss"></style>
+
+<route lang="yaml">
+meta:
+  requiresGuest: true
+</route>
